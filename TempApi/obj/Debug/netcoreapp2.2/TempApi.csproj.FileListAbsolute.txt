@@ -1,0 +1,14 @@
+C:\Users\derek\source\repos\TempApi\TempApi\bin\Debug\netcoreapp2.2\TempApi.deps.json
+C:\Users\derek\source\repos\TempApi\TempApi\bin\Debug\netcoreapp2.2\TempApi.runtimeconfig.json
+C:\Users\derek\source\repos\TempApi\TempApi\bin\Debug\netcoreapp2.2\TempApi.runtimeconfig.dev.json
+C:\Users\derek\source\repos\TempApi\TempApi\bin\Debug\netcoreapp2.2\TempApi.dll
+C:\Users\derek\source\repos\TempApi\TempApi\bin\Debug\netcoreapp2.2\TempApi.pdb
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.csprojAssemblyReference.cache
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.csproj.CoreCompileInputs.cache
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.RazorAssemblyInfo.cache
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.RazorAssemblyInfo.cs
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.AssemblyInfoInputs.cache
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.AssemblyInfo.cs
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.RazorTargetAssemblyInfo.cache
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.dll
+C:\Users\derek\source\repos\TempApi\TempApi\obj\Debug\netcoreapp2.2\TempApi.pdb
