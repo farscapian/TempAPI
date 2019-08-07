@@ -1,0 +1,24 @@
+version: "3"
+services:
+    web:
+        image: tempapi:latest
+        expose:
+            - "5000"
+        depends_on:
+            - mongo
+    mongo:
+       image: mongo:latest
+       ports:
+       - "127.0.0.1:27017:27017"
+       volumes:
+       - "/home/app/mymongo:/data/db"
+       command: mongod --auth
+    proxy:
+        image: nginx:latest
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+             - /etc/letsencrypt/:/etc/letsencrypt/
+        links:
+            - web

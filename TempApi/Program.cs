@@ -19,6 +19,7 @@ namespace TempApi
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            .UseSetting("https_port", "443")
+            .UseStartup<Startup>();
     }
 }

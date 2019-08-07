@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\derek\\source\\repos\\TempApi\\TempApi\\TempApi.csproj": {}
+    "C:\\Users\\derek\\source\\repos\\TempAPI\\TempApi\\TempApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\derek\\source\\repos\\TempApi\\TempApi\\TempApi.csproj": {
+    "C:\\Users\\derek\\source\\repos\\TempAPI\\TempApi\\TempApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\derek\\source\\repos\\TempApi\\TempApi\\TempApi.csproj",
+        "projectUniqueName": "C:\\Users\\derek\\source\\repos\\TempAPI\\TempApi\\TempApi.csproj",
         "projectName": "TempApi",
-        "projectPath": "C:\\Users\\derek\\source\\repos\\TempApi\\TempApi\\TempApi.csproj",
+        "projectPath": "C:\\Users\\derek\\source\\repos\\TempAPI\\TempApi\\TempApi.csproj",
         "packagesPath": "C:\\Users\\derek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\derek\\source\\repos\\TempApi\\TempApi\\obj\\",
+        "outputPath": "C:\\Users\\derek\\source\\repos\\TempAPI\\TempApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
