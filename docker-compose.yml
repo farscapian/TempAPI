@@ -11,7 +11,7 @@ services:
        ports:
        - "127.0.0.1:27017:27017"
        volumes:
-       - "/home/app/mymongo:/data/db"
+       - "/home/ubuntu/db:/data/db"
        command: mongod --auth
     proxy:
         image: nginx:latest
