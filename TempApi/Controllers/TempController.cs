@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TempApi.Models;
+using TempApi.Services;
 
 namespace TempApi.Controllers
 {
@@ -12,80 +13,65 @@ namespace TempApi.Controllers
     [ApiController]
     public class TempController : ControllerBase
     {
-        private readonly TempContext _context;
+        private readonly TempService _tempService;
 
-        public TempController(TempContext context)
+        public TempController(TempService tempService)
         {
-            _context = context;
-
-            if (_context.TempItems.Count() == 0)
-            {
-                // Create a new Tempitem if the collection is empty.
-                // this means you can't delete all TempItems.
-                _context.TempItems.Add(new TempItem { HeaterAction = "off", SensorName = "AUTO_GENERATED_RECORD", Temperature = 25.0M, Timestamp = DateTime.Now });
-                _context.SaveChanges();
-            }
+            _tempService = tempService;
         }
 
-        // GET: api/Temp
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TempItem>>> GetTempItems()
-        {
-            return await _context.TempItems.ToListAsync();
-        }
+        public ActionResult<List<TempItem>> Get() => _tempService.Get();
 
-        // GET: api/Temp/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TempItem>> GetTempItem(long id)
-        {
-            var tempItem = await _context.TempItems.FindAsync(id);
 
-            if (tempItem == null)
+        [HttpGet("{id:length(24)}", Name = "GetTemp")]
+        public ActionResult<TempItem> Get(string id)
+        {
+            var temp = _tempService.Get(id);
+
+            if (temp == null)
             {
                 return NotFound();
             }
 
-            return tempItem;
+            return temp;
         }
 
-        // POST: api/temp
         [HttpPost]
-        public async Task<ActionResult<TempItem>> PostTempItem(TempItem item)
+        public ActionResult<TempItem> Create(TempItem temp)
         {
-            _context.TempItems.Add(item);
-            await _context.SaveChangesAsync();
+            _tempService.Create(temp);
 
-            return CreatedAtAction(nameof(GetTempItem), new { id = item.Id }, item);
+            return CreatedAtRoute("GetTemp", new { id = temp.Id.ToString() }, temp);
         }
 
-        // PUT: api/Temp/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTempItem(long id, TempItem item)
+
+        [HttpPut("{id:length(24)}")]
+        public IActionResult Update(string id, TempItem tempIn)
         {
-            if (id != item.Id)
+            var book = _tempService.Get(id);
+
+            if (book == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(item).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _tempService.Update(id, tempIn);
 
             return NoContent();
         }
 
-        // DELETE: api/temp/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTempItem(long id)
+        [HttpDelete("{id:length(24)}")]
+        public IActionResult Delete(string id)
         {
-            var tempItem = await _context.TempItems.FindAsync(id);
+            var temp = _tempService.Get(id);
 
-            if (tempItem == null)
+            if (temp == null)
             {
                 return NotFound();
             }
 
-            _context.TempItems.Remove(tempItem);
-            await _context.SaveChangesAsync();
+            _tempService.Remove(temp.Id);
 
             return NoContent();
         }

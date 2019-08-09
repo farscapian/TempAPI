@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TempApi.Models;
+using TempApi.Services;
 
 namespace TempApi
 {
@@ -27,8 +28,17 @@ namespace TempApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TempContext>(opt =>
-                opt.UseInMemoryDatabase("TempList"));
+            //services.AddDbContext<TempContext>(opt =>
+            //    opt.UseInMemoryDatabase("TempList"));
+
+            services.Configure<TempDbSettings>(
+                Configuration.GetSection(nameof(TempDbSettings)));
+
+            services.AddSingleton<ITempDbSettings>(sp =>
+                sp.GetRequiredService<IOptions<TempDbSettings>>().Value);
+
+            services.AddSingleton<TempService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -45,7 +55,6 @@ namespace TempApi
                 app.UseHsts();
             }
 
-            #app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
