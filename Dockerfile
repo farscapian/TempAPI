@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
@@ -14,6 +14,7 @@ FROM build AS publish
 RUN dotnet publish "TempApi.csproj" -c Release -o /app
 
 FROM base AS final
+RUN apt update && apt install inetutils-ping wait-for-it
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "TempApi.dll"]
