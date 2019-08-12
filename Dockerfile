@@ -14,7 +14,7 @@ FROM build AS publish
 RUN dotnet publish "TempApi.csproj" -c Release -o /app
 
 FROM base AS final
-RUN apt update && apt install inetutils-ping wait-for-it
+RUN apt update && apt install wait-for-it
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "TempApi.dll"]
