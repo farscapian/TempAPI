@@ -33,7 +33,7 @@ namespace TempApi.Services
             _tempItem.ReplaceOne(tempItem => tempItem.Id == id, tempIn);
 
         public void Remove(TempItem tempIn) =>
-            _tempItem.DeleteOne(book => book.Id == tempIn.Id);
+            _tempItem.DeleteOne(tempItem => tempItem.Id == tempIn.Id);
 
         public void Remove(string id) =>
             _tempItem.DeleteOne(tempItem => tempItem.Id == id);
