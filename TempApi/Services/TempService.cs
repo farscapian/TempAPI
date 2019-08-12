@@ -23,10 +23,10 @@ namespace TempApi.Services
         public TempItem Get(string id) =>
             _tempItem.Find<TempItem>(tempItem => tempItem.Id == id).FirstOrDefault();
 
-        public TempItem Create(TempItem book)
+        public TempItem Create(TempItem tempIn)
         {
-            _tempItem.InsertOne(book);
-            return book;
+            _tempItem.InsertOne(tempIn);
+            return tempIn;
         }
 
         public void Update(string id, TempItem tempIn) =>

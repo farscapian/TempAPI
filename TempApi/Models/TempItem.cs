@@ -11,8 +11,8 @@ namespace TempApi.Models
     public class TempItem
     {
         [BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
-        public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         public string SensorName { get; set; }
         public DateTime Timestamp { get; set; }
         public decimal Temperature { get; set; }

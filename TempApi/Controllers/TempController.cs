@@ -49,10 +49,6 @@ namespace TempApi.Controllers
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, TempItem tempIn)
         {
-            // due to the peculiarities with document-based databases such as mongo,
-            // we first need to insert a new record (resulting in a new ID) then delete the old record.
-            _tempService.Create(tempIn);
-
             var temp = _tempService.Get(id);
 
             if (temp == null)
@@ -60,9 +56,9 @@ namespace TempApi.Controllers
                 return NotFound();
             }
 
-            _tempService.Remove(temp.Id);
+            _tempService.Update(id, tempIn);
 
-            return CreatedAtRoute("GetTemp", new { id = tempIn.Id.ToString() }, tempIn);
+            return NoContent();
         }
 
         [HttpDelete("{id:length(24)}")]
